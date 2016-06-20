@@ -8,6 +8,9 @@ ADD . /work/src/github.com/marloncampos/webservices
 # Build the webservices command inside the container.
 # (You may fetch or manage dependencies here,
 # either manually or with a tool like "godep".)
+RUN apk add --no-cache git \
+	&& go get github.com/CiscoZeus/go-zeusclient \
+	&& apk del git
 RUN go install github.com/marloncampos/webservices
 
 # Run the web command by default when the container starts.
